@@ -2,7 +2,7 @@ from setuptools import setup,find_packages
 
 setup(
         name="simecy",
-        version='0.1',
+        version='v0.2',
         description='simple encrypt file',
         author='captainfffsama',
         author_email='tuanzhangsama@outlook.com',

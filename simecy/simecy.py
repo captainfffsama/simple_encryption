@@ -56,6 +56,12 @@ def encode(file_path: str, password: str, save_path: Optional[str] = None):
         save_path: str
             加密之后文件的保持位置,默认是和未加密文件同一目录,在其名字之后加上bytes
     """
+    if save_path is None:
+        if not file_path.endswith("bytes"):
+            save_path = file_path+"bytes"
+        else:
+            print("WARNING: {} is exist,will not encode {}".format(save_path, file_path))
+            return 0
     with open(file_path, "rb") as fr:
         content = fr.read()
     kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32,
@@ -68,8 +74,6 @@ def encode(file_path: str, password: str, save_path: Optional[str] = None):
     token: bytes = f.encrypt(content)
     # print(token)
 
-    if save_path is None:
-        save_path = file_path+"bytes"
     with open(save_path, "wb") as fw:
         fw.write(token)
 

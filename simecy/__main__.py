@@ -11,7 +11,9 @@ def main(args):
     elif args.mode in ("decode", "d"):
         decode(args.file_path, args.password)
     else:
-        print("please run python eord_file.python -h")
+        print("please run python -m simecy -h")
+    print("simecy work done!")
+
 
 
 def parse_args():
