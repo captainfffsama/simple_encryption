@@ -4,6 +4,12 @@
 # 依赖
 - cryptography
 
+# 编译
+```shell
+python setup.py build_ext --inplace
+python setup.py bdist_wheel
+```
+
 # 安装
 ```shell
 pip install .
