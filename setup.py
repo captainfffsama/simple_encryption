@@ -4,7 +4,7 @@
 @Date: 2023-02-15 14:05:16
 @LastEditors: captainfffsama tuanzhangsama@outlook.com
 @LastEditTime: 2023-02-15 15:26:25
-@FilePath: /simple_encryption/setup2.py
+@FilePath: /simple_encryption/setup.py
 @Description:
 '''
 import os
