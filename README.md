@@ -1,47 +1,60 @@
-# 说明
-对文件进行加密解密,可以直接作为工具对文件进行加解密,也可以在代码中作为上下文管理,对需要解密的文件进行临时解密使用
+[中文文档](./README_ZH.md)
+# Description
 
-# 依赖
+Encrypt and decrypt files, can be used as a tool to encrypt and decrypt files directly, or as a context manager in the code to temporarily decrypt files that need to be decrypted. If you want to use your own exclusive encryption method, you can modify the `SALT` and `PDSALT` variables in line 5 and 6 of [./simecy/simecy](./simecy/simecy), and then recompile and install it.
 
-# 编译
+# Dependencies
+
+# Compilation
+
 ```shell
 python setup.py build_ext --inplace
 python setup.py bdist_wheel
 ```
 
-# 安装
+# Installation
+
 ```shell
 pip install .
 ```
 
-# 使用说明
-默认密码是`imsohandsome`
-## 作为单独的工具使用
-比如要加密文件`大国崛起.mp4`
-```shell
-python -m simecy -f ./大国崛起.mp4 -m e -pd imsohandsome
-```
-同目录下应该会生成`大国崛起.mp4bytes`
-同理解密
-```shell
-python -m simecy -f ./大国崛起.mp4bytes -m d -pd imsohandsome
-```
-同目录下应该会生成`大国崛起.mp4`
+# Usage
 
-## 在代码中使用
-假如我们已有一个神秘的`secret.txt`文件已经使用上述命令加密变成了`secret.txtbytes`,现在解密如下:
+The default password is `imsohandsome`.
+
+## Used as a standalone tool
+
+For example, to encrypt the file `rising.mp4`:
+
+```shell
+python -m simecy -f ./rising.mp4 -m e -pd imsohandsome
+```
+
+A file named `rising.mp4bytes` should be generated in the same directory. Similarly, to decrypt:
+
+```shell
+python -m simecy -f ./rising.mp4bytes -m d -pd imsohandsome
+```
+
+A file named `rising.mp4` should be generated in the same directory.
+
+## Used in code
+
+Assuming we already have a mysterious file `secret.txt` that has been encrypted using the above command and become `secret.txtbytes`, now decrypt it as follows:
+
 ```python
 from simecy import decrypt
 import yaml
 with decrypt("./secret.txtbytes","imsohandsome") as d:
-    # do your work ,for example:
+    # do your work, for example:
         with open(d,"r") as fr:
             line=fr.readline()
         ...
 ```
 
 # TODO
-- [ ] 可以手动设定解密文件的生命周期
-- [ ] 只有上下文管理的方式有点脏
-- [ ] 解密文件是文件对象支持
-- [ ] 效率优化
+
+-  [ ] Manually set the lifecycle of decrypted files
+-  [ ] Only context management is a bit messy
+-  [ ] Decrypted files support file object
+-  [ ] Efficiency optimization

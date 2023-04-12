@@ -3,7 +3,7 @@
 @Author: captainfffsama
 @Date: 2023-02-15 14:05:16
 @LastEditors: captainfffsama tuanzhangsama@outlook.com
-@LastEditTime: 2023-02-15 15:26:25
+@LastEditTime: 2023-04-12 11:08:34
 @FilePath: /simple_encryption/setup.py
 @Description:
 '''
@@ -49,7 +49,7 @@ class build_py(_build_py):
         return filtered_modules
 setup(
         name="simecy",
-        version='0.4',
+        version='0.5',
         description='simple encrypt file',
         author='captainfffsama',
         author_email='tuanzhangsama@outlook.com',
