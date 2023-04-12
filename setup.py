@@ -65,7 +65,7 @@ setup(
             'Programming Language :: Python :: 3.8',
             'Programming Language :: Python :: 3.9',
         ],
-        install_requires=['cryptography',],
+        install_requires=['cython',],
         zip_safe=False,
         ext_modules=cythonize(get_ext_paths('simecy', EXCLUDE_FILES),language_level=3)
 )
