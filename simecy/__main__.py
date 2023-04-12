@@ -7,9 +7,9 @@ def main(args):
     assert os.path.exists(
         args.file_path), "{} file is not exists".format(args.file_path)
     if args.mode in ("encode", "e"):
-        encode(args.file_path, args.password,"")
+        encode(args.file_path, args.password,args.file_path+"bytes")
     elif args.mode in ("decode", "d"):
-        decode(args.file_path, args.password,"")
+        decode(args.file_path, args.password,args.file_path[:-5] if args.file_path.endswith("bytes") else args.file_path+"_decode")
     else:
         print("please run python -m simecy -h")
     print("simecy work done!")
